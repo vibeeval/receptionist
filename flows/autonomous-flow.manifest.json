@@ -1,0 +1,9 @@
+{
+  "revision": 1,
+  "sdk": "retell-sdk@6.2.4",
+  "templateSha256": "e4a975ec00f29e43f46791e8d1e4d3b2fe732de5c46714e728560eb084b4dc5b",
+  "materializedSha256": "e4a975ec00f29e43f46791e8d1e4d3b2fe732de5c46714e728560eb084b4dc5b",
+  "providerImported": false,
+  "agentBinding": "REQUIRED_AFTER_APPROVED_IMPORT",
+  "note": "Runtime artifactSha256 pins the versioned template. Materialized digest also requires deployment review. Remote published agent/flow mapping must be checked before live enablement."
+}

@@ -1,0 +1,20 @@
+{
+  "profile": "disabled",
+  "enableLive": false,
+  "database": {"kind": "sqlite"},
+  "accounts": [{"id": "account-a", "keyRef": "env:RETELL_ACCOUNT_A_KEY", "tenantRoute": "demo", "agentIds": ["REPLACE_AGENT_ID"]}],
+  "google": {
+    "oauth": {"clientIdRef": "env:GOOGLE_CLIENT_ID", "clientSecretRef": "env:GOOGLE_CLIENT_SECRET", "refreshTokenRef": "env:GOOGLE_REFRESH_TOKEN", "encryptionKeyRef": "env:GOOGLE_CREDENTIAL_ENCRYPTION_KEY"},
+    "scope": "https://www.googleapis.com/auth/calendar.events.owned",
+    "availability": true,
+    "freeBusyScope": "https://www.googleapis.com/auth/calendar.events.freebusy",
+    "calendars": {"fictional-demo": "REPLACE_OWNED_CALENDAR_ID"}
+  },
+  "autonomous": {
+    "pins": {"REPLACE_AGENT_ID": {"agentVersion": 1, "flowId": "REPLACE_FLOW_ID", "flowVersion": 1, "artifactSha256": "REPLACE_TEMPLATE_SHA256"}},
+    "setup": {"origin": "https://REPLACE_APPROVED_ORIGIN.example", "remoteDigests": {"REPLACE_AGENT_ID": "REPLACE_REVIEWED_REMOTE_FLOW_SHA256"}, "handoffNumbers": {"account-a": "REPLACE_APPROVED_E164_NUMBER"}}
+  },
+  "slots": [],
+  "schedules": [{"tenant": "fictional-demo", "resource": "room-one", "service": "Görüşme", "weekdays": [1,2,3,4,5], "startMinute": 540, "endMinute": 1020, "durationMinutes": 30, "horizonDays": 14}],
+  "knowledge": {"fictional-demo": {"name": "REPLACE_BUSINESS_NAME", "policy": "REPLACE_APPROVED_BUSINESS_POLICY", "service": "Görüşme"}}
+}

@@ -1,0 +1,8 @@
+{
+  "profile": "disabled",
+  "enableLive": false,
+  "accounts": [{"id":"account-a","keyRef":"env:RETELL_ACCOUNT_A_KEY","tenantRoute":"demo","agentIds":["REPLACE_AGENT_ID"]}],
+  "google": {"accessTokenRef":"env:GOOGLE_CALENDAR_ACCESS_TOKEN","scope":"https://www.googleapis.com/auth/calendar.events.owned","calendars":{"fictional-demo":"REPLACE_OWNED_TEST_CALENDAR_ID"}},
+  "knowledge":{"fictional-demo":{"name":"Kurgusal bilgi masası","policy":"Belirsiz talepleri insan incelemesine yönlendir.","service":"Bilgi görüşmesi"}},
+  "slots":[{"tenant":"fictional-demo","id":"slot-1","resource":"resource-1","startMs":0,"endMs":1,"service":"REPLACE_APPROVED_SERVICE"}]
+}

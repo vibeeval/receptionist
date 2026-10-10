@@ -1,0 +1,809 @@
+{
+  "format": 1,
+  "baseCommit": "f7ad17976c9b3fb35a3ef63b94f39b48e10e400d",
+  "status": "PRIVATE_SOURCE_BACKUP_NOT_PRODUCTION_ACCEPTED",
+  "excludes": [
+    ".git",
+    "node_modules",
+    "dist",
+    ".env except .env.example",
+    ".local",
+    "databases",
+    "credentials",
+    "secrets",
+    "customer-data",
+    "private evidence/review/reference",
+    "personal paths"
+  ],
+  "verification": "Integrity only; manifest is not a publisher signature.",
+  "files": [
+    {
+      "path": ".env.example",
+      "sha256": "50639ceb92bd1a6b7041c209180f8ab52588d90ccacc1d690116b7e37745aaee"
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "bdcf4d04da664842f2476d5fe86c8bcbf7be6e2a8891092a63b227ab8b49dad4"
+    },
+    {
+      "path": "BACKUP.md",
+      "sha256": "2721c2106b15380fe23c8a214a03f7d5315cc3cb149ec46ecf2349aa6cf09a4a"
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "sha256": "90e713a94ddd46e613bf54cba33ef134f334f21945826f680b94abf1e696ea16"
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    {
+      "path": "LICENSE-OPTIONS.md",
+      "sha256": "6b5fa72c490ca7931de23b90498dc345018b6c727828552ae221ad89f5b7729d"
+    },
+    {
+      "path": "README.md",
+      "sha256": "4ee2e52289207c68ae4f09d747eb77a5b1335412e8df32eaa47ee28803301104"
+    },
+    {
+      "path": "THIRD-PARTY-NOTICES.md",
+      "sha256": "293936488d0e291ff4244bb0504800b7de19954661c993479c36996e51a03d06"
+    },
+    {
+      "path": "composition.example.json",
+      "sha256": "292817978121a8048e5f631ea39be842303c9343827f29862598a935dde11a6d"
+    },
+    {
+      "path": "config.example.json",
+      "sha256": "6dba489f8f9fffbe66cf556d2e9b1d9b050b1efe4890ad93041816493f9cdde1"
+    },
+    {
+      "path": "core-references.example.json",
+      "sha256": "94226c6b71892ecbf5a546af7ae69193fb4682f832effab8be6894ed5ef2805e"
+    },
+    {
+      "path": "db/postgres-store.sql",
+      "sha256": "ec0d2b474a6075387ee6e70db85fe89a4dbfedeeebcb720773c1c2abfbc1c981"
+    },
+    {
+      "path": "db/sqlite.sql",
+      "sha256": "e1d6353a5fe231d00a9833257ace2f5d80be79a3c54ff3be6dc322473ba06190"
+    },
+    {
+      "path": "docs/api.md",
+      "sha256": "d2b7b2abfc8e12bff70f9fc4e3d780600b843903c4e75ffb3a21227b38da147f"
+    },
+    {
+      "path": "docs/backup-restore.md",
+      "sha256": "65fbc964c62d4920c671ecd2f4bda4df22af98fa9883767ecef19f439c6d1ea9"
+    },
+    {
+      "path": "docs/cost-retention.md",
+      "sha256": "cfb6b04d20453a0fb75f81eeb70e83adb4b20132fd05341db501cc45f655f38e"
+    },
+    {
+      "path": "docs/dashboard-api.md",
+      "sha256": "f6682bab74e282c1fd1abfd029241e39c3dd4312ebef5a0e8c38fe3acd112a05"
+    },
+    {
+      "path": "docs/dashboard.md",
+      "sha256": "5b08a0f5331e993080a38594d79cdb51495420b422b134b103b3f3297755adac"
+    },
+    {
+      "path": "docs/dependency-inventory.json",
+      "sha256": "e3d3cdbabb7aa21415760455091e7fba2985ced409b790c9099b278b549eb94f"
+    },
+    {
+      "path": "docs/dependency-license-review.json",
+      "sha256": "e520bc54a4732140b6dd67cf987cb9ed5fe4c7bac79d32fa824778fa0d28c68b"
+    },
+    {
+      "path": "docs/deployment-runbook.md",
+      "sha256": "f0e40144bae1b53014fc5016f4bfaaec615c8d1d6313444584094d22e007d1e7"
+    },
+    {
+      "path": "docs/postgres.md",
+      "sha256": "cc9afa94760453c25d5789a3b8c79f853d7a85e654030b41b10c0b9071b90de9"
+    },
+    {
+      "path": "docs/provider-guide.md",
+      "sha256": "a1e1eb5b20e1184b7e6f4361f06f39ec08e9388727d5634955c3cbe36459c7ea"
+    },
+    {
+      "path": "docs/provider-setup.md",
+      "sha256": "6ec7e9c2433e0eec604871e39b47645f0df169306db4c6245cb03389ed2a80c6"
+    },
+    {
+      "path": "docs/quickstart.md",
+      "sha256": "3bf1f1b1143deeaee25222e262f2c60408c3179af93fc81c67dcd880ca9ff597"
+    },
+    {
+      "path": "docs/readiness-backlog.md",
+      "sha256": "620a50f8aeb3b9d6b7aaad5dbfeb15168ccb3dda57a08220bd165be53a97214f"
+    },
+    {
+      "path": "docs/retention-policy.md",
+      "sha256": "1606945e05ed6cc5194f1501617b7b0a0c03ada0764147900e93deef4e4619f3"
+    },
+    {
+      "path": "docs/threat-model.md",
+      "sha256": "fa23356cdca6926dd2ca6f7e1985109c670a8559bea06da75e1c0def991cf637"
+    },
+    {
+      "path": "docs/upgrade-guide.md",
+      "sha256": "b16798436a385efdccc28d70e5396a7f63ef2ba2723a0b0fd51cd9cb427f8eca"
+    },
+    {
+      "path": "flows/autonomous-agent-patch.v1.json",
+      "sha256": "7bfdace1db06ddfe206ca660f7b212a934a4f06d51e02cf6cf5b69b5bf1258e4"
+    },
+    {
+      "path": "flows/autonomous-flow.manifest.json",
+      "sha256": "1075324fb3d16bfebe9f827ab7c91f57b1e8117c6cd612a785b39c9f472cf9dc"
+    },
+    {
+      "path": "flows/autonomous-flow.v1.json",
+      "sha256": "28882144599905534d64ba73debf62a3eec1acd5dea626a6cbff9d14e68ee31f"
+    },
+    {
+      "path": "licenses/dependencies/@types/node/LICENSE",
+      "sha256": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383"
+    },
+    {
+      "path": "licenses/dependencies/@types/pg/LICENSE",
+      "sha256": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383"
+    },
+    {
+      "path": "licenses/dependencies/@types/ws/LICENSE",
+      "sha256": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383"
+    },
+    {
+      "path": "licenses/dependencies/@typescript/typescript-darwin-arm64/LICENSE",
+      "sha256": "a7d00bfd54525bc694b6e32f64c7ebcf5e6b7ae3657be5cc12767bce74654a47"
+    },
+    {
+      "path": "licenses/dependencies/@typescript/typescript-darwin-arm64/NOTICE.txt",
+      "sha256": "f5c708b59114507b8b27b48181b6883d106bbca0c1634bbee45b5e344237b66b"
+    },
+    {
+      "path": "licenses/dependencies/pg/LICENSE",
+      "sha256": "192b8f5c96900f04a1271dec39688655d7416c1c6ea84a508e18b50d2b6751f3"
+    },
+    {
+      "path": "licenses/dependencies/pg-cloudflare/LICENSE",
+      "sha256": "192b8f5c96900f04a1271dec39688655d7416c1c6ea84a508e18b50d2b6751f3"
+    },
+    {
+      "path": "licenses/dependencies/pg-connection-string/LICENSE",
+      "sha256": "2244b5486c4427001b6756a87b9a297d427c111dcc3ba64a097492a8979c23d0"
+    },
+    {
+      "path": "licenses/dependencies/pg-int8/LICENSE",
+      "sha256": "4e8e87ccdfc7e4b47fd89015f78468aa53b6bf43ab6e6e12d43e8f55294911de"
+    },
+    {
+      "path": "licenses/dependencies/pg-pool/LICENSE",
+      "sha256": "4f15ee7fc2a72082859d7e0d12dfa4bcdd70b1c744ad3850d07780730ac08557"
+    },
+    {
+      "path": "licenses/dependencies/pg-protocol/LICENSE",
+      "sha256": "192b8f5c96900f04a1271dec39688655d7416c1c6ea84a508e18b50d2b6751f3"
+    },
+    {
+      "path": "licenses/dependencies/pg-types/README-license.md",
+      "sha256": "c565667e0560bba6502cda29fd9d461fd3acaf9dac24dda4d2758ce0f8b720cd"
+    },
+    {
+      "path": "licenses/dependencies/pgpass/README-license.md",
+      "sha256": "f660a02f22de943c8c28a93791e8571c67f9088be93226fd526842b586cb4db4"
+    },
+    {
+      "path": "licenses/dependencies/postgres-array/license",
+      "sha256": "f057f36739d53d228a746de4440c1e0c644ecde06d6beab45337d39c9d12a393"
+    },
+    {
+      "path": "licenses/dependencies/postgres-bytea/license",
+      "sha256": "f057f36739d53d228a746de4440c1e0c644ecde06d6beab45337d39c9d12a393"
+    },
+    {
+      "path": "licenses/dependencies/postgres-date/license",
+      "sha256": "f057f36739d53d228a746de4440c1e0c644ecde06d6beab45337d39c9d12a393"
+    },
+    {
+      "path": "licenses/dependencies/postgres-interval/license",
+      "sha256": "f057f36739d53d228a746de4440c1e0c644ecde06d6beab45337d39c9d12a393"
+    },
+    {
+      "path": "licenses/dependencies/retell-sdk/LICENSE",
+      "sha256": "3315fc154956fea33315b56ebe4736a24496913e865fe8059ca8758a7f8b928d"
+    },
+    {
+      "path": "licenses/dependencies/split2/LICENSE",
+      "sha256": "c372ef2fa1dfcb124ed807609751e75e3a009f108c5724916b489288fcb88a0c"
+    },
+    {
+      "path": "licenses/dependencies/typescript/LICENSE",
+      "sha256": "a7d00bfd54525bc694b6e32f64c7ebcf5e6b7ae3657be5cc12767bce74654a47"
+    },
+    {
+      "path": "licenses/dependencies/typescript/NOTICE.txt",
+      "sha256": "f5c708b59114507b8b27b48181b6883d106bbca0c1634bbee45b5e344237b66b"
+    },
+    {
+      "path": "licenses/dependencies/undici-types/LICENSE",
+      "sha256": "a6db8096b2707bc0102d256917d4d33f298ba36d8c3f25de067a2b5bb379db27"
+    },
+    {
+      "path": "licenses/dependencies/ws/LICENSE",
+      "sha256": "2b29dcfe0d6471f7e8c92c5fb38c9f93edee10330937055440192f1832b1ecef"
+    },
+    {
+      "path": "licenses/dependencies/xtend/LICENSE",
+      "sha256": "82e67379203d5794e7c44549847d8d64ae6904591381682360470898bd306821"
+    },
+    {
+      "path": "licenses/dependencies/zod/LICENSE",
+      "sha256": "3f1189b28e3866e0d979968d466b78f813f76827cfdca1fbb124cc0a5c8841f8"
+    },
+    {
+      "path": "licenses/retell-sdk-LICENSE",
+      "sha256": "3315fc154956fea33315b56ebe4736a24496913e865fe8059ca8758a7f8b928d"
+    },
+    {
+      "path": "licenses/ws-LICENSE",
+      "sha256": "2b29dcfe0d6471f7e8c92c5fb38c9f93edee10330937055440192f1832b1ecef"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "e20bda4ad0793fd0e2e209257cb7e440faf3debc65ba8df372129cee65b06dcd"
+    },
+    {
+      "path": "package.json",
+      "sha256": "5a341ea32932eaa384afce69afdc2bce636a003c9cbf7669ed6eb1cdf40f74da"
+    },
+    {
+      "path": "production-composition.example.json",
+      "sha256": "761b42ccb4500c7b0353dfa5ddccdc2f4789412be02b66da7063e8d189179345"
+    },
+    {
+      "path": "public/dashboard/app.js",
+      "sha256": "9a3e0ba52a6a629dcfe80009a0ee5432e384ea3fc62982d3f7e4ba63dcc236e7"
+    },
+    {
+      "path": "public/dashboard/index.html",
+      "sha256": "a2bc16f0065ed5c42dee683b379c62993bc77bfaca23954be5707be92fe3019b"
+    },
+    {
+      "path": "public/dashboard/style.css",
+      "sha256": "559f7a9bb46455987731b8709c3156abd01faa2c6799d7a69fda5a9d648562ec"
+    },
+    {
+      "path": "scripts/autonomous-demo.ts",
+      "sha256": "2667a5d8d1540f78948b608a6a1cc3cf4c5b3f3838cf53f6d0d1e86913e003b4"
+    },
+    {
+      "path": "scripts/check-source.cjs",
+      "sha256": "6e01890bceef000398b9043c78d445193bf5e585dfb5e466bd805a44d4b59611"
+    },
+    {
+      "path": "scripts/composition-demo.ts",
+      "sha256": "c6f45b89f9fe32ee51a613d6ef89c36211016dfbd54250a6eb65658f0f027b27"
+    },
+    {
+      "path": "scripts/dashboard-demo.ts",
+      "sha256": "9dc61f88bd4cc58175dda79816e40074249bd8c906ac3e46f0a85b707c9f3c01"
+    },
+    {
+      "path": "scripts/export-autonomous-flow.ts",
+      "sha256": "715bb9585bd7619201a9b17b5e01ccec45635d3684f9c6b744b9ff5466857fae"
+    },
+    {
+      "path": "scripts/google-reauthorize.ts",
+      "sha256": "ec2c1bb39eaca5a3b86b1799ea7cfbe092f1c23fa78c9c46e2b261eae57a59f2"
+    },
+    {
+      "path": "scripts/postgres-suite.ts",
+      "sha256": "8aa443cc4941f7098a126ef97c62fe027c07099c21c9c7956ae58e83a4849f97"
+    },
+    {
+      "path": "scripts/retell-export-digest.ts",
+      "sha256": "dd348a915ccce4b405918877415919f70e19cca69d8008249d690ca043eb5939"
+    },
+    {
+      "path": "scripts/retention-demo.ts",
+      "sha256": "8a318111506ec76c263d4d0f3a43da31c69b0a3f48883c15ea53ec745ec5825b"
+    },
+    {
+      "path": "scripts/run-postgres-local.py",
+      "sha256": "0405f07718e35da60664d6af244ffbf1b03ab1bdcf960f265aada5e6b07e000c"
+    },
+    {
+      "path": "scripts/sqlite-backup.ts",
+      "sha256": "9b6aa7b9cc6cbecb92f69316436537b81144eb2a92696f27af91a4b69855350f"
+    },
+    {
+      "path": "src/admin/auth.ts",
+      "sha256": "e293b444508d24327373be5c5f3f0161ac723ac2b12675d61c554ae9a22e8df8"
+    },
+    {
+      "path": "src/admin/bootstrap.ts",
+      "sha256": "5a937ba8b6687bd3107936033f228539f589d7624e93a91a1d326f6787bc428d"
+    },
+    {
+      "path": "src/admin/server.ts",
+      "sha256": "1191ae93fdcfdc12aa99f13618c7215da4a7090abcff7ffc416b98f6d0b1510b"
+    },
+    {
+      "path": "src/admin/state.ts",
+      "sha256": "cc98c3541f465cf7092b64ee0d83cf88977288b9230da2ee981f9ba3468d3878"
+    },
+    {
+      "path": "src/async-store.ts",
+      "sha256": "006a3df3c8fb70f8d6942250d68340f28557b41746f12cf8f7538cd77f629b02"
+    },
+    {
+      "path": "src/autonomous/controller.ts",
+      "sha256": "6ca2cc2d2c6e44058399897a2dac3bde8a8acacf0423f16864c3dc305f13917a"
+    },
+    {
+      "path": "src/autonomous/flow.ts",
+      "sha256": "c0e9f8d6d3a5242a1ab733b971f7d4468078459a95acfcd9d82842e6f1537f71"
+    },
+    {
+      "path": "src/autonomous/lease.ts",
+      "sha256": "ede6ce186efe73b788e16b0db1bed5f6f9426d444709cca445fabc3595844c3c"
+    },
+    {
+      "path": "src/autonomous/schema.ts",
+      "sha256": "57c22d68ff5e8d0fb8b80dddf2eaa66787c9a9fa9816ba49fe4afdbc9f447f2b"
+    },
+    {
+      "path": "src/autonomous/transport.ts",
+      "sha256": "352696a90ff1c8f613a1838f2d6262559bc41f300b6ea2b8677c3e85c33e1419"
+    },
+    {
+      "path": "src/composition-config.ts",
+      "sha256": "0c9bf9cfd4a04cdbafcc3edfe4709c05cb6d65d0681308e99f3e8b75847c5044"
+    },
+    {
+      "path": "src/composition-migration.ts",
+      "sha256": "2769e21d3ef1cbbe19e90746f21407a5418298ee0c572f672d27e91d905e6fc6"
+    },
+    {
+      "path": "src/composition.ts",
+      "sha256": "f7a4a6c24bd00ba1306d699c2a135b18e41a6356cad42b8e1a413dd5712e049b"
+    },
+    {
+      "path": "src/config.ts",
+      "sha256": "a049fec1a195d0a5e5d535d41324fc24879909056472e507c3e3a8851289e780"
+    },
+    {
+      "path": "src/contracts.ts",
+      "sha256": "53ca3dd5e1db152417aec9906a236ca3d8a7688ee2ba572078c3706b9fd18539"
+    },
+    {
+      "path": "src/demo.ts",
+      "sha256": "3d66b66585f632b075cbc07bafc7a60e51d3e88f8e6cf63848f47d3984b5cddc"
+    },
+    {
+      "path": "src/engine.ts",
+      "sha256": "4689ab480fefd1713d726a90753ba7bd7fee743aedb285cda07b7ba743331cb3"
+    },
+    {
+      "path": "src/fake-provider.ts",
+      "sha256": "c1ae1c0c2eeaff3f18f07c94e78db62f41ec50bcccefcfc669366f9168ff1b6a"
+    },
+    {
+      "path": "src/operations.ts",
+      "sha256": "ed3c6281144acf47c98f1e97232810c05901532cac567181acc09d4108260e5d"
+    },
+    {
+      "path": "src/pg-store.ts",
+      "sha256": "365789a31a6d0bf3f596d4e04f99fff65b0a4e4ea6da53c1a8a5b60278f5c151"
+    },
+    {
+      "path": "src/ports.ts",
+      "sha256": "5d6cbefc41d8c750f57d9df4e5630b84faf0f03e14465dd56c8c31aab97a093b"
+    },
+    {
+      "path": "src/postgres-engine.ts",
+      "sha256": "c77d2bdac5eee7288cafb8d8defd15bb4538dc2ee465caf632e278b1514d2578"
+    },
+    {
+      "path": "src/providers/credential-db.ts",
+      "sha256": "6814d8d6c770b50128422a182a459b2baf6e22228657d239517dafb9705c0807"
+    },
+    {
+      "path": "src/providers/credentials.ts",
+      "sha256": "1128792fbd8b496994dbba6802ec606adf08d41f60ee861661560d323f710697"
+    },
+    {
+      "path": "src/providers/crm-webhook.ts",
+      "sha256": "c9df53d63409bcab148ad8b2929128c7f9c241267e4e77187d7db871ba60075a"
+    },
+    {
+      "path": "src/providers/google-availability.ts",
+      "sha256": "8321fc462c161006f71b9c2d17127281490ee5473a49c86d6fbe8df9bf5eac7f"
+    },
+    {
+      "path": "src/providers/google-calendar.ts",
+      "sha256": "c0326a4bfcb0e42f604075d23b9b2e57fcdb8d6937a15b8c38b6b2c4144696ee"
+    },
+    {
+      "path": "src/providers/google-transport.ts",
+      "sha256": "77b4d641b9dca4f4a73d521b89c73a9ff902d72c47c900b6f75c7ac26b81d1ff"
+    },
+    {
+      "path": "src/providers/retell-lookup-contract.ts",
+      "sha256": "bfbbf5a4a275d025f3f664a71f448c7a108d3cee6e258767a23ed8ca473609f8"
+    },
+    {
+      "path": "src/providers/retell-migration.ts",
+      "sha256": "7477facb3dfa50fb45c429df6aa641c6f28a2898ee038cad699343902c266a75"
+    },
+    {
+      "path": "src/providers/retell-setup.ts",
+      "sha256": "087b5e2473d47d2fc7dddb1ebffe1936e407e1415a7bd0ae7048e741432f7872"
+    },
+    {
+      "path": "src/providers/retell.ts",
+      "sha256": "e426730189db048b3d087078164cb7b7e347620f9f29be56fd065e0e7a9b73b3"
+    },
+    {
+      "path": "src/retention.ts",
+      "sha256": "3c11e707293c94d9c818cbc14f58a095bfdf040c24fc0c5681da2ae6f86e2ce6"
+    },
+    {
+      "path": "src/schedule.ts",
+      "sha256": "6e41b09f3dfd59cbf3f8d94c63a135edd8b353b4ee07b4ab5e6c279416de0bd4"
+    },
+    {
+      "path": "src/security.ts",
+      "sha256": "9be002117b91edd0f5117b3e394322787e13b2dbeabb2e58e3aeb05c6a40bc32"
+    },
+    {
+      "path": "src/serve.ts",
+      "sha256": "b255910a094c2da7459e2a18e471f89f38a93502028ec545589423c8c89eae1e"
+    },
+    {
+      "path": "src/server.ts",
+      "sha256": "82cd4c9791e9e84d75b5d3fb4e613bfd2116f149c6100d54c5d9a0d890269892"
+    },
+    {
+      "path": "src/store.ts",
+      "sha256": "bbf5b8e603c3e7b077a92fda014eec5f9b7c91986dbf9c23ba06ece89a1914e1"
+    },
+    {
+      "path": "src/voice-confirmation.ts",
+      "sha256": "1f05e37b9f45eda5837d7f356466e8d282539bbc48a5b9363e39cd92a97969cc"
+    },
+    {
+      "path": "tests/admin/admin.test.ts",
+      "sha256": "cca5f0cc169b577f7e5c83e56385b92c8cc6b3a95206d7b2a29f7708e02d2b3f"
+    },
+    {
+      "path": "tests/admin/fixture.ts",
+      "sha256": "1a5d7872033068abece81311123d4a98d47d7e7b0a0c946f0e4e5a9a897a363d"
+    },
+    {
+      "path": "tests/admin/hardening.test.ts",
+      "sha256": "acd57183da892bf4b8bb80bb0668012e267ef7cfd6c8529bce448949c1de88ef"
+    },
+    {
+      "path": "tests/audit45.test.ts",
+      "sha256": "2f75e53a7f9b61225874dc1327c4ae650c89b2b912229bd01b096a59b0ef6555"
+    },
+    {
+      "path": "tests/autonomous/confirmation.test.ts",
+      "sha256": "93672701dd43ed41ff57d7ccb4924a141dc552f898c9007257f39008182bae46"
+    },
+    {
+      "path": "tests/autonomous/fixture.ts",
+      "sha256": "b2c55788ac3dfaac654c8199d8435243a1360694b0d3792ce43ccec0fc075a27"
+    },
+    {
+      "path": "tests/autonomous/flow.test.ts",
+      "sha256": "0834c6decd23350f8d4906344d3e82f255c6cbc17fbc08032b8dfab8619ffc3c"
+    },
+    {
+      "path": "tests/autonomous/ownership.test.ts",
+      "sha256": "0fe60165d5a492235ac620e00fa1eb907b5227d74669449a48201afdaed452fb"
+    },
+    {
+      "path": "tests/autonomous/resilience.test.ts",
+      "sha256": "36e7d67b87ea30b8688bc86aab50d364f9a5e58b0be91ae734bfa1719c8402d9"
+    },
+    {
+      "path": "tests/autonomous/revocation.test.ts",
+      "sha256": "2f49021af200925b1047969fd55530f221373404abe066e08c22116f4e2f702b"
+    },
+    {
+      "path": "tests/autonomous/revoke-cases.ts",
+      "sha256": "8545d9fc57a6ec62eb5a9beba2144788a7e2e6f75636a46875f7a31c343e5c70"
+    },
+    {
+      "path": "tests/autonomous/time-cases.ts",
+      "sha256": "9c682e40b1fe1ce4a3266bbd16f1d97d5187e115a19dc8a183b5ad5281417bf5"
+    },
+    {
+      "path": "tests/autonomous/time-order.test.ts",
+      "sha256": "330a55cc487ae5dc79f1a3c51214aeb017b7f53e409a3a4773d09618f1396f3b"
+    },
+    {
+      "path": "tests/autonomous/transport.test.ts",
+      "sha256": "dea3260bc1ee086ec1462bbb1bc0df89b5d0f615b3c6dc4da40a96e9cc0bdc93"
+    },
+    {
+      "path": "tests/boundaries.test.ts",
+      "sha256": "991e90907d36ba313a8eeee4f9e6933eb693228c9412ea772727684a14678c69"
+    },
+    {
+      "path": "tests/composition/availability.test.ts",
+      "sha256": "83540f2c1da5d99c05253086452d31220f7b0f54602f04b12a41670283d3406a"
+    },
+    {
+      "path": "tests/composition/composition.test.ts",
+      "sha256": "5cc77e1e44d325416e97c1018c9b102560639401324d7f4b15387267c22d115c"
+    },
+    {
+      "path": "tests/composition/credential-db.test.ts",
+      "sha256": "83c9d497d191a749070e361fc56efe5ace98a1189569a97c1ad0d17283272531"
+    },
+    {
+      "path": "tests/composition/credentials.test.ts",
+      "sha256": "35d51401c3ee6a44c38ebb60d92bbcd707feaf28d0c698ef0a086efa78b15672"
+    },
+    {
+      "path": "tests/composition/fixture.ts",
+      "sha256": "4f7022a74aa4fbaa515d2422670eba65237524bdfc1fefc1072eb4f2025d05ac"
+    },
+    {
+      "path": "tests/composition/monitor-process.test.ts",
+      "sha256": "9663867833eb8822eae9958cf7a1c9d94958a39848da49942c780c94c1c663c7"
+    },
+    {
+      "path": "tests/composition/no-egress.ts",
+      "sha256": "558cf09600d2df045931a70a9873c46ec1c0fddadc941775bc9831d32bb1a711"
+    },
+    {
+      "path": "tests/composition/production-contracts.test.ts",
+      "sha256": "518940adcc387847a974601519997d8fb07b2c24ae7e368ba7f788529b44fb69"
+    },
+    {
+      "path": "tests/composition/production-e2e.test.ts",
+      "sha256": "f0272d0721a3ad216cf8f40c3c17205eec9dfddf7e3ccfd44bb214391a6df452"
+    },
+    {
+      "path": "tests/composition/production-fixture.ts",
+      "sha256": "c5ea1f13e1ed32255b8b3fd2b8ce6037455d11f878624c62ca7a8300bce05acd"
+    },
+    {
+      "path": "tests/composition/schedule.test.ts",
+      "sha256": "f858771b05fd2edb8b921e39c5fb6abd1f06fb19d5896e1b8a221cd219282188"
+    },
+    {
+      "path": "tests/composition/startup-validation.test.ts",
+      "sha256": "34d2fdd1dc701260213c33b19f0569bbf24a253bf0ea56ee8dbc37355396636c"
+    },
+    {
+      "path": "tests/composition/store-seeding.test.ts",
+      "sha256": "0f8b49396e944b8f03e8b1b596cc4624dd4ed6c27d834930299cfd2aba363d06"
+    },
+    {
+      "path": "tests/composition/transport.test.ts",
+      "sha256": "14d15464e6c21eb2909866d1810983c90bfbf49f12fc08e564177d31f08f00f6"
+    },
+    {
+      "path": "tests/core.test.ts",
+      "sha256": "1ca1f47bbb21616fbf61e3dcfd9d8a95927b19adeeb47ec3d01ffc1aef503f74"
+    },
+    {
+      "path": "tests/helpers.ts",
+      "sha256": "9b1089199e03f6b29633a68bac75f563876367b8dd7cf6580f05d4bb20319e9e"
+    },
+    {
+      "path": "tests/monitor-lease-cases.ts",
+      "sha256": "fa98f33343c02be846070826667fc2718202a5df91aa4560474e7bf6799c5b3d"
+    },
+    {
+      "path": "tests/operations.test.ts",
+      "sha256": "a7a9becf08c45eab0c0eee1ff0a85a0dbee23b68827f60e1e957d05d3d306156"
+    },
+    {
+      "path": "tests/package-integrity.test.ts",
+      "sha256": "e09541f7cfabc7a4247e13658a9a870b4f494c103cd73c1f5e3bd721cee9814f"
+    },
+    {
+      "path": "tests/postgres/audit45.test.ts",
+      "sha256": "6e431845616a6573bb15010ebf49c2d96d0871da36577097c27db54674068797"
+    },
+    {
+      "path": "tests/postgres/autonomous-composition.test.ts",
+      "sha256": "fd264f75fb29ad8b515bdccd57a180056d1c41c88e20bb25f11f8d5ebd15f941"
+    },
+    {
+      "path": "tests/postgres/autonomous-revocation.test.ts",
+      "sha256": "3816699eda72531432714dac9f7cd00fa26f5f90e72dae1cf3714ee9bdb9549d"
+    },
+    {
+      "path": "tests/postgres/autonomous-time-order.test.ts",
+      "sha256": "0fb87649de142df1a2501ff96f40e8548c4b32ec9d1fc6d51dd22235e392bf81"
+    },
+    {
+      "path": "tests/postgres/boundaries.test.ts",
+      "sha256": "90fd1900a616688b312b7073c791e3a6aacca9e424c78e554e3dc7b709d2b1f8"
+    },
+    {
+      "path": "tests/postgres/core.test.ts",
+      "sha256": "03dc94fa08b615d1bb0f69143f951d7b843efaec99724887e4e3efdbf4c4b8f6"
+    },
+    {
+      "path": "tests/postgres/helpers.ts",
+      "sha256": "eecbd39f16abf0f9a1a78cf3e8483d05c2411f952c9d6135df6b00c7544684ea"
+    },
+    {
+      "path": "tests/postgres/monitor-process.test.ts",
+      "sha256": "cc86a5672b206dcc12c816fae9528f7b118c4b7766a92b2f64df762e63315ae4"
+    },
+    {
+      "path": "tests/postgres/process-task.ts",
+      "sha256": "a26be50842525aae799a6af8a3ca96805dc7a0eb403a2f2baebb9f9215fa9626"
+    },
+    {
+      "path": "tests/postgres/product.test.ts",
+      "sha256": "1caae39c6cb9eb9b450ac34d09e6ccf0eb9ec92eccadbd0c8031337dcbfedebe"
+    },
+    {
+      "path": "tests/postgres/production.test.ts",
+      "sha256": "dc467f023ade075221a1b24b0918143d7af526ef8526242483c3e3869f2e7ace"
+    },
+    {
+      "path": "tests/postgres/retell-gateway.test.ts",
+      "sha256": "7468da80d117851852f9dc53a8c4e3190c3b96d8297500f7751c0280783493c0"
+    },
+    {
+      "path": "tests/postgres/retention-replay.test.ts",
+      "sha256": "f795a695bb3a92f4e2348961f18c40da7bb5de05949f9c9cf2ec18a7887a6b09"
+    },
+    {
+      "path": "tests/postgres/retention.test.ts",
+      "sha256": "098ef0c839afffb2563dde820db6ed4451e562792e6f3bef731f1b6660fecf81"
+    },
+    {
+      "path": "tests/postgres/review-fixes.test.ts",
+      "sha256": "5a746c8e955f7fdbaf9777de83a04ac32cf381dfa69f61dee970d5fd9a011a0b"
+    },
+    {
+      "path": "tests/postgres/startup-validation.test.ts",
+      "sha256": "b4b17a4bad56d8329b7abe27be17435055356235db1f7fe9376ba26e048e9eec"
+    },
+    {
+      "path": "tests/postgres/transport-process.test.ts",
+      "sha256": "fc859ce3da42f66d6c3b04af88f60e516fb3e64cf8ca553be49ada40bd7ae4a8"
+    },
+    {
+      "path": "tests/postgres/upgrade.test.ts",
+      "sha256": "0aa981a36d4fc0530e954089b2b9f357701aa418e2554b3e0090bab987446195"
+    },
+    {
+      "path": "tests/process-task.ts",
+      "sha256": "8ba82b6a6330ba74a6b55c2b8c9fff3e3736a436e0541e491aa150d13f7fdd23"
+    },
+    {
+      "path": "tests/product.test.ts",
+      "sha256": "3b5e7d3907dac11338ade3e65e14815b4b33fabacd74f2c7a01665f94664623e"
+    },
+    {
+      "path": "tests/providers/google-calendar.test.ts",
+      "sha256": "754b95b1fb928a7002403e1867dd11d2c1272e597761d84b2b07891ba7a9e2f3"
+    },
+    {
+      "path": "tests/providers/offline-guard.test.ts",
+      "sha256": "19be0e9d3df9e17782dc86c8d22fec8601674350d2124ae86ffa9bd111992f48"
+    },
+    {
+      "path": "tests/providers/offline-guard.ts",
+      "sha256": "e6b96823f46797b6b57794a82a3498bd86dd80474ddf098c0ad241650f3ae09c"
+    },
+    {
+      "path": "tests/providers/retell-gateway.test.ts",
+      "sha256": "e2cc36e64bd4cff4807914f2e8ec7906393b7e14c9d9d3fb56d58d9499cb1401"
+    },
+    {
+      "path": "tests/providers/retell-sdk-transport.test.ts",
+      "sha256": "6cb67c6d378341f3065432647743bcaf9aef5eaed55a7424e6c8e60a07fcbee0"
+    },
+    {
+      "path": "tests/providers/signature.test.ts",
+      "sha256": "b56dac9ae4a6866323eb7ff8c4c1bfbaaf03501f6287ee2b615736dee9abf4df"
+    },
+    {
+      "path": "tests/retention-replay.test.ts",
+      "sha256": "309ee90845e50f2d14c50d4c72da203aab709efcadf8b4ec3e3773f423aa077f"
+    },
+    {
+      "path": "tests/retention-shared.ts",
+      "sha256": "654dc91956aa775de85a8ff15d0e4fda9fc1d95daf4512b9620ca04584c49378"
+    },
+    {
+      "path": "tests/retention.test.ts",
+      "sha256": "762525389b75e53d0ce960d87c31fcfd0ae91ab77e15423febcf6e4490267ac6"
+    },
+    {
+      "path": "tests/review-fixes.test.ts",
+      "sha256": "5603449789067cbdedb4ec7bcf5ca5a885d197f648d43de835122ffe5ea7ca1f"
+    },
+    {
+      "path": "tests/sqlite-backup.test.ts",
+      "sha256": "3b8bb8d68ab3975386eb125b118029e43dfdc3aa784b5902e5992fcb13b6beb3"
+    },
+    {
+      "path": "tests/transport-process.test.ts",
+      "sha256": "846127fd245c1c004823139b339cc162e7f10e640a6ed7a5a6c7e99dc4c17522"
+    },
+    {
+      "path": "tests/ui/BROWSER-QA.md",
+      "sha256": "c4290fef047d6728c56f6c859465c03c4ea3ea9e0b8285ec5b27a01042176b30"
+    },
+    {
+      "path": "tests/ui/auth.test.js",
+      "sha256": "7a9e7bb156d01d4bae1d3b1f2448e9fe661a54311f8a6a6cac480adc010cab10"
+    },
+    {
+      "path": "tests/ui/contract.test.js",
+      "sha256": "d3c890bb245a634cb92680b084e14fa883892c31745d242ba7e5aa1baccb9507"
+    },
+    {
+      "path": "tests/ui/control.test.js",
+      "sha256": "9ca56895ecb46e790d97d89fde7bdfbac1f0094999acaeffd5d3abc1dc1c0b27"
+    },
+    {
+      "path": "tests/ui/dom.js",
+      "sha256": "58d14a0603bd0bf273858ea1458ed61e7730c449b57e2b3ebb747bb0bbfcc035"
+    },
+    {
+      "path": "tests/ui/fixture.test.js",
+      "sha256": "a750658f3888d916a1b0add7947f4b9aef4e3a778e7ab3b643f203b451bc6a1d"
+    },
+    {
+      "path": "tests/ui/forms.test.js",
+      "sha256": "5c5e85e52ca88d037c85ee017dd6fc7e597e099d66030a2498a431809604c0bb"
+    },
+    {
+      "path": "tests/ui/harness.js",
+      "sha256": "cb09e794daf7cb1c52d67d5cadc24e3fbc0ec85e34d30ae61f30c1a1c5f92b3a"
+    },
+    {
+      "path": "tests/ui/listeners.test.js",
+      "sha256": "5620c6e0ab330f27a478d4f46715b612de7dc771e940e5caf8d86041587eb35a"
+    },
+    {
+      "path": "tests/ui/package.json",
+      "sha256": "a51bff776fdd53226e2e67d8f654d17dadfe3decc8bf8bf869cba3aff9813826"
+    },
+    {
+      "path": "tests/ui/races.test.js",
+      "sha256": "985e3fe0c3148d737fafb8100653cf5840876361c34f08cf45b60ad6a714ecc9"
+    },
+    {
+      "path": "tests/ui/review-regressions.test.js",
+      "sha256": "0db644ca22f78add85036635bc6672d1224d34e96e02e80cadffdb940591c8ba"
+    },
+    {
+      "path": "tests/ui/roles.test.js",
+      "sha256": "f57b69676e0e81d07b085bc23a969e9f112940d9d5edb89e4e6bb4eda1860e94"
+    },
+    {
+      "path": "tests/ui/states.test.js",
+      "sha256": "0252d9d6e6a2118e62fd1e76e04825fd2a13465c85a3c5b982c2f30d72756f7a"
+    },
+    {
+      "path": "tests/upgrade.test.ts",
+      "sha256": "8642209f010ecc616d8fa9dcad9692afe58071fdc64b929a706803faf9da6a4a"
+    },
+    {
+      "path": "tsconfig.json",
+      "sha256": "5665a419eb3967858f206291ed19c7472bb80173ce5727b4cba7be55c6334794"
+    }
+  ]
+}

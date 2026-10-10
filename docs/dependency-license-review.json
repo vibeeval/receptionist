@@ -1,0 +1,489 @@
+{
+  "scope": "Source archive excludes node_modules and Node runtime. 23 installed package texts preserved; 18 optional other-platform packages metadata only. No conflicting distribution terms identified within inspected scope; not a comprehensive legal opinion.",
+  "packages": [
+    {
+      "name": "@types/node",
+      "version": "22.20.5",
+      "license": "MIT",
+      "dev": true,
+      "evidence": [
+        {
+          "path": "licenses/dependencies/@types/node/LICENSE",
+          "source": "LICENSE",
+          "sha256": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383"
+        }
+      ],
+      "review": "installed upstream license/notice preserved"
+    },
+    {
+      "name": "@types/pg",
+      "version": "8.23.1",
+      "license": "MIT",
+      "dev": true,
+      "evidence": [
+        {
+          "path": "licenses/dependencies/@types/pg/LICENSE",
+          "source": "LICENSE",
+          "sha256": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383"
+        }
+      ],
+      "review": "installed upstream license/notice preserved"
+    },
+    {
+      "name": "@types/ws",
+      "version": "8.18.2",
+      "license": "MIT",
+      "dev": true,
+      "evidence": [
+        {
+          "path": "licenses/dependencies/@types/ws/LICENSE",
+          "source": "LICENSE",
+          "sha256": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383"
+        }
+      ],
+      "review": "installed upstream license/notice preserved"
+    },
+    {
+      "name": "@typescript/typescript-aix-ppc64",
+      "version": "7.0.2",
+      "license": "Apache-2.0",
+      "dev": true,
+      "evidence": [],
+      "review": "optional other-platform package: metadata only; not distributed"
+    },
+    {
+      "name": "@typescript/typescript-darwin-arm64",
+      "version": "7.0.2",
+      "license": "Apache-2.0",
+      "dev": true,
+      "evidence": [
+        {
+          "path": "licenses/dependencies/@typescript/typescript-darwin-arm64/LICENSE",
+          "source": "LICENSE",
+          "sha256": "a7d00bfd54525bc694b6e32f64c7ebcf5e6b7ae3657be5cc12767bce74654a47"
+        },
+        {
+          "path": "licenses/dependencies/@typescript/typescript-darwin-arm64/NOTICE.txt",
+          "source": "NOTICE.txt",
+          "sha256": "f5c708b59114507b8b27b48181b6883d106bbca0c1634bbee45b5e344237b66b"
+        }
+      ],
+      "review": "installed upstream license/notice preserved"
+    },
+    {
+      "name": "@typescript/typescript-darwin-x64",
+      "version": "7.0.2",
+      "license": "Apache-2.0",
+      "dev": true,
+      "evidence": [],
+      "review": "optional other-platform package: metadata only; not distributed"
+    },
+    {
+      "name": "@typescript/typescript-freebsd-arm64",
+      "version": "7.0.2",
+      "license": "Apache-2.0",
+      "dev": true,
+      "evidence": [],
+      "review": "optional other-platform package: metadata only; not distributed"
+    },
+    {
+      "name": "@typescript/typescript-freebsd-x64",
+      "version": "7.0.2",
+      "license": "Apache-2.0",
+      "dev": true,
+      "evidence": [],
+      "review": "optional other-platform package: metadata only; not distributed"
+    },
+    {
+      "name": "@typescript/typescript-linux-arm",
+      "version": "7.0.2",
+      "license": "Apache-2.0",
+      "dev": true,
+      "evidence": [],
+      "review": "optional other-platform package: metadata only; not distributed"
+    },
+    {
+      "name": "@typescript/typescript-linux-arm64",
+      "version": "7.0.2",
+      "license": "Apache-2.0",
+      "dev": true,
+      "evidence": [],
+      "review": "optional other-platform package: metadata only; not distributed"
+    },
+    {
+      "name": "@typescript/typescript-linux-loong64",
+      "version": "7.0.2",
+      "license": "Apache-2.0",
+      "dev": true,
+      "evidence": [],
+      "review": "optional other-platform package: metadata only; not distributed"
+    },
+    {
+      "name": "@typescript/typescript-linux-mips64el",
+      "version": "7.0.2",
+      "license": "Apache-2.0",
+      "dev": true,
+      "evidence": [],
+      "review": "optional other-platform package: metadata only; not distributed"
+    },
+    {
+      "name": "@typescript/typescript-linux-ppc64",
+      "version": "7.0.2",
+      "license": "Apache-2.0",
+      "dev": true,
+      "evidence": [],
+      "review": "optional other-platform package: metadata only; not distributed"
+    },
+    {
+      "name": "@typescript/typescript-linux-riscv64",
+      "version": "7.0.2",
+      "license": "Apache-2.0",
+      "dev": true,
+      "evidence": [],
+      "review": "optional other-platform package: metadata only; not distributed"
+    },
+    {
+      "name": "@typescript/typescript-linux-s390x",
+      "version": "7.0.2",
+      "license": "Apache-2.0",
+      "dev": true,
+      "evidence": [],
+      "review": "optional other-platform package: metadata only; not distributed"
+    },
+    {
+      "name": "@typescript/typescript-linux-x64",
+      "version": "7.0.2",
+      "license": "Apache-2.0",
+      "dev": true,
+      "evidence": [],
+      "review": "optional other-platform package: metadata only; not distributed"
+    },
+    {
+      "name": "@typescript/typescript-netbsd-arm64",
+      "version": "7.0.2",
+      "license": "Apache-2.0",
+      "dev": true,
+      "evidence": [],
+      "review": "optional other-platform package: metadata only; not distributed"
+    },
+    {
+      "name": "@typescript/typescript-netbsd-x64",
+      "version": "7.0.2",
+      "license": "Apache-2.0",
+      "dev": true,
+      "evidence": [],
+      "review": "optional other-platform package: metadata only; not distributed"
+    },
+    {
+      "name": "@typescript/typescript-openbsd-arm64",
+      "version": "7.0.2",
+      "license": "Apache-2.0",
+      "dev": true,
+      "evidence": [],
+      "review": "optional other-platform package: metadata only; not distributed"
+    },
+    {
+      "name": "@typescript/typescript-openbsd-x64",
+      "version": "7.0.2",
+      "license": "Apache-2.0",
+      "dev": true,
+      "evidence": [],
+      "review": "optional other-platform package: metadata only; not distributed"
+    },
+    {
+      "name": "@typescript/typescript-sunos-x64",
+      "version": "7.0.2",
+      "license": "Apache-2.0",
+      "dev": true,
+      "evidence": [],
+      "review": "optional other-platform package: metadata only; not distributed"
+    },
+    {
+      "name": "@typescript/typescript-win32-arm64",
+      "version": "7.0.2",
+      "license": "Apache-2.0",
+      "dev": true,
+      "evidence": [],
+      "review": "optional other-platform package: metadata only; not distributed"
+    },
+    {
+      "name": "@typescript/typescript-win32-x64",
+      "version": "7.0.2",
+      "license": "Apache-2.0",
+      "dev": true,
+      "evidence": [],
+      "review": "optional other-platform package: metadata only; not distributed"
+    },
+    {
+      "name": "pg",
+      "version": "8.23.1",
+      "license": "MIT",
+      "dev": false,
+      "evidence": [
+        {
+          "path": "licenses/dependencies/pg/LICENSE",
+          "source": "LICENSE",
+          "sha256": "192b8f5c96900f04a1271dec39688655d7416c1c6ea84a508e18b50d2b6751f3"
+        }
+      ],
+      "review": "installed upstream license/notice preserved"
+    },
+    {
+      "name": "pg-cloudflare",
+      "version": "1.4.1",
+      "license": "MIT",
+      "dev": false,
+      "evidence": [
+        {
+          "path": "licenses/dependencies/pg-cloudflare/LICENSE",
+          "source": "LICENSE",
+          "sha256": "192b8f5c96900f04a1271dec39688655d7416c1c6ea84a508e18b50d2b6751f3"
+        }
+      ],
+      "review": "installed upstream license/notice preserved"
+    },
+    {
+      "name": "pg-connection-string",
+      "version": "2.14.1",
+      "license": "MIT",
+      "dev": false,
+      "evidence": [
+        {
+          "path": "licenses/dependencies/pg-connection-string/LICENSE",
+          "source": "LICENSE",
+          "sha256": "2244b5486c4427001b6756a87b9a297d427c111dcc3ba64a097492a8979c23d0"
+        }
+      ],
+      "review": "installed upstream license/notice preserved"
+    },
+    {
+      "name": "pg-int8",
+      "version": "1.0.1",
+      "license": "ISC",
+      "dev": false,
+      "evidence": [
+        {
+          "path": "licenses/dependencies/pg-int8/LICENSE",
+          "source": "LICENSE",
+          "sha256": "4e8e87ccdfc7e4b47fd89015f78468aa53b6bf43ab6e6e12d43e8f55294911de"
+        }
+      ],
+      "review": "installed upstream license/notice preserved"
+    },
+    {
+      "name": "pg-pool",
+      "version": "3.14.0",
+      "license": "MIT",
+      "dev": false,
+      "evidence": [
+        {
+          "path": "licenses/dependencies/pg-pool/LICENSE",
+          "source": "LICENSE",
+          "sha256": "4f15ee7fc2a72082859d7e0d12dfa4bcdd70b1c744ad3850d07780730ac08557"
+        }
+      ],
+      "review": "installed upstream license/notice preserved"
+    },
+    {
+      "name": "pg-protocol",
+      "version": "1.16.1",
+      "license": "MIT",
+      "dev": false,
+      "evidence": [
+        {
+          "path": "licenses/dependencies/pg-protocol/LICENSE",
+          "source": "LICENSE",
+          "sha256": "192b8f5c96900f04a1271dec39688655d7416c1c6ea84a508e18b50d2b6751f3"
+        }
+      ],
+      "review": "installed upstream license/notice preserved"
+    },
+    {
+      "name": "pg-types",
+      "version": "2.2.0",
+      "license": "MIT",
+      "dev": false,
+      "evidence": [
+        {
+          "path": "licenses/dependencies/pg-types/README-license.md",
+          "source": "README.md license section",
+          "sha256": "c565667e0560bba6502cda29fd9d461fd3acaf9dac24dda4d2758ce0f8b720cd"
+        }
+      ],
+      "review": "installed upstream license/notice preserved"
+    },
+    {
+      "name": "pgpass",
+      "version": "1.0.5",
+      "license": "MIT",
+      "dev": false,
+      "evidence": [
+        {
+          "path": "licenses/dependencies/pgpass/README-license.md",
+          "source": "README.md license section",
+          "sha256": "f660a02f22de943c8c28a93791e8571c67f9088be93226fd526842b586cb4db4"
+        }
+      ],
+      "review": "installed upstream license/notice preserved"
+    },
+    {
+      "name": "postgres-array",
+      "version": "2.0.0",
+      "license": "MIT",
+      "dev": false,
+      "evidence": [
+        {
+          "path": "licenses/dependencies/postgres-array/license",
+          "source": "license",
+          "sha256": "f057f36739d53d228a746de4440c1e0c644ecde06d6beab45337d39c9d12a393"
+        }
+      ],
+      "review": "installed upstream license/notice preserved"
+    },
+    {
+      "name": "postgres-bytea",
+      "version": "1.0.1",
+      "license": "MIT",
+      "dev": false,
+      "evidence": [
+        {
+          "path": "licenses/dependencies/postgres-bytea/license",
+          "source": "license",
+          "sha256": "f057f36739d53d228a746de4440c1e0c644ecde06d6beab45337d39c9d12a393"
+        }
+      ],
+      "review": "installed upstream license/notice preserved"
+    },
+    {
+      "name": "postgres-date",
+      "version": "1.0.7",
+      "license": "MIT",
+      "dev": false,
+      "evidence": [
+        {
+          "path": "licenses/dependencies/postgres-date/license",
+          "source": "license",
+          "sha256": "f057f36739d53d228a746de4440c1e0c644ecde06d6beab45337d39c9d12a393"
+        }
+      ],
+      "review": "installed upstream license/notice preserved"
+    },
+    {
+      "name": "postgres-interval",
+      "version": "1.2.0",
+      "license": "MIT",
+      "dev": false,
+      "evidence": [
+        {
+          "path": "licenses/dependencies/postgres-interval/license",
+          "source": "license",
+          "sha256": "f057f36739d53d228a746de4440c1e0c644ecde06d6beab45337d39c9d12a393"
+        }
+      ],
+      "review": "installed upstream license/notice preserved"
+    },
+    {
+      "name": "retell-sdk",
+      "version": "6.2.4",
+      "license": "Apache-2.0",
+      "dev": false,
+      "evidence": [
+        {
+          "path": "licenses/dependencies/retell-sdk/LICENSE",
+          "source": "LICENSE",
+          "sha256": "3315fc154956fea33315b56ebe4736a24496913e865fe8059ca8758a7f8b928d"
+        }
+      ],
+      "review": "installed upstream license/notice preserved"
+    },
+    {
+      "name": "split2",
+      "version": "4.2.0",
+      "license": "ISC",
+      "dev": false,
+      "evidence": [
+        {
+          "path": "licenses/dependencies/split2/LICENSE",
+          "source": "LICENSE",
+          "sha256": "c372ef2fa1dfcb124ed807609751e75e3a009f108c5724916b489288fcb88a0c"
+        }
+      ],
+      "review": "installed upstream license/notice preserved"
+    },
+    {
+      "name": "typescript",
+      "version": "7.0.2",
+      "license": "Apache-2.0",
+      "dev": true,
+      "evidence": [
+        {
+          "path": "licenses/dependencies/typescript/LICENSE",
+          "source": "LICENSE",
+          "sha256": "a7d00bfd54525bc694b6e32f64c7ebcf5e6b7ae3657be5cc12767bce74654a47"
+        },
+        {
+          "path": "licenses/dependencies/typescript/NOTICE.txt",
+          "source": "NOTICE.txt",
+          "sha256": "f5c708b59114507b8b27b48181b6883d106bbca0c1634bbee45b5e344237b66b"
+        }
+      ],
+      "review": "installed upstream license/notice preserved"
+    },
+    {
+      "name": "undici-types",
+      "version": "6.21.0",
+      "license": "MIT",
+      "dev": true,
+      "evidence": [
+        {
+          "path": "licenses/dependencies/undici-types/LICENSE",
+          "source": "LICENSE",
+          "sha256": "a6db8096b2707bc0102d256917d4d33f298ba36d8c3f25de067a2b5bb379db27"
+        }
+      ],
+      "review": "installed upstream license/notice preserved"
+    },
+    {
+      "name": "ws",
+      "version": "8.22.0",
+      "license": "MIT",
+      "dev": false,
+      "evidence": [
+        {
+          "path": "licenses/dependencies/ws/LICENSE",
+          "source": "LICENSE",
+          "sha256": "2b29dcfe0d6471f7e8c92c5fb38c9f93edee10330937055440192f1832b1ecef"
+        }
+      ],
+      "review": "installed upstream license/notice preserved"
+    },
+    {
+      "name": "xtend",
+      "version": "4.0.2",
+      "license": "MIT",
+      "dev": false,
+      "evidence": [
+        {
+          "path": "licenses/dependencies/xtend/LICENSE",
+          "source": "LICENSE",
+          "sha256": "82e67379203d5794e7c44549847d8d64ae6904591381682360470898bd306821"
+        }
+      ],
+      "review": "installed upstream license/notice preserved"
+    },
+    {
+      "name": "zod",
+      "version": "4.6.5",
+      "license": "MIT",
+      "dev": false,
+      "evidence": [
+        {
+          "path": "licenses/dependencies/zod/LICENSE",
+          "source": "LICENSE",
+          "sha256": "3f1189b28e3866e0d979968d466b78f813f76827cfdca1fbb124cc0a5c8841f8"
+        }
+      ],
+      "review": "installed upstream license/notice preserved"
+    }
+  ]
+}

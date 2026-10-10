@@ -1,0 +1,536 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>Resepsiyon paneli</title>
+<link rel="stylesheet" href="/style.css">
+<script src="/app.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">İçeriğe geç</a>
+
+<p id="boot-status" class="boot-status" role="status">Oturum denetleniyor…</p>
+
+<div id="login-view" class="login-view" hidden>
+  <div class="login-card">
+    <p class="product-name">Resepsiyon paneli</p>
+    <h1 class="login-title">Giriş yap</h1>
+    <p class="login-lede">Çağrıları, randevuları ve işletme ayarlarını yönetmek için oturum açın.</p>
+    <form id="login-form" class="form" novalidate>
+      <div class="field">
+        <label for="login-username">Kullanıcı adı</label>
+        <input id="login-username" name="username" type="text" autocomplete="username" autocapitalize="off" spellcheck="false" maxlength="48" required>
+      </div>
+      <div class="field">
+        <label for="login-password">Parola</label>
+        <input id="login-password" name="password" type="password" autocomplete="current-password" maxlength="256" required>
+      </div>
+      <p id="login-error" class="form-error" role="alert"></p>
+      <button id="login-submit" type="submit" class="button button--primary button--block">Giriş yap</button>
+    </form>
+  </div>
+</div>
+
+<div id="app-view" class="app" hidden>
+  <aside class="sidebar">
+    <div class="sidebar-head">
+      <span class="product-name">Resepsiyon paneli</span>
+      <button id="menu-toggle" type="button" class="button menu-toggle" aria-expanded="false" aria-controls="primary-nav">Menü</button>
+    </div>
+    <nav id="primary-nav" class="nav" aria-label="Ana menü">
+      <ul class="nav-list">
+        <li><button type="button" class="nav-item" data-view="overview" aria-current="page">Genel bakış</button></li>
+        <li><button type="button" class="nav-item" data-view="calls">Çağrılar</button></li>
+        <li><button type="button" class="nav-item" data-view="bookings">Randevular</button></li>
+        <li><button type="button" class="nav-item" data-view="connections">Bağlantılar</button></li>
+        <li><button type="button" class="nav-item" data-view="business">İşletme taslağı</button></li>
+        <li><button type="button" class="nav-item" data-view="budget">Bütçe ve limitler</button></li>
+        <li><button type="button" class="nav-item" data-view="control">Durdurma kontrolü</button></li>
+        <li><button type="button" class="nav-item" data-view="errors">Hatalar</button></li>
+        <li><button type="button" class="nav-item" data-view="audit">Denetim kaydı</button></li>
+      </ul>
+    </nav>
+    <p class="sidebar-foot">Yerel yönetim paneli. Veriler bu sunucunun kayıtlarından okunur.</p>
+  </aside>
+
+  <div class="workspace">
+    <header class="topbar">
+      <div class="topbar-tenant">
+        <label for="tenant-select">İşletme</label>
+        <select id="tenant-select"></select>
+      </div>
+      <div class="topbar-user">
+        <span id="demo-badge" class="badge badge--warn" hidden>Demo</span>
+        <span class="user">
+          <span id="user-name" class="user-name"></span>
+          <span id="user-role" class="role-badge"></span>
+        </span>
+        <button id="logout-button" type="button" class="button button--quiet">Çıkış yap</button>
+      </div>
+    </header>
+
+    <div id="demo-banner" class="demo-banner" hidden>
+      <strong>Sentetik demo verisi</strong>
+      <span>Kayıtlar geçici yerel veritabanından gelir; gerçek müşteri verisi değildir.</span>
+    </div>
+
+    <main id="main" class="main" tabindex="-1">
+      <div id="global-error" class="message message--global" role="alert"></div>
+      <div id="notice" class="message message--global" role="status" aria-live="polite"></div>
+
+      <!-- Genel bakış -->
+      <section class="panel" data-panel="overview" aria-labelledby="h-overview">
+        <header class="panel-head">
+          <div>
+            <h1 id="h-overview" tabindex="-1">Genel bakış</h1>
+            <p class="lede">Seçili işletmenin yerel kayıtlarına göre güncel durum.</p>
+          </div>
+          <button type="button" class="button" data-refresh="overview">Yenile</button>
+        </header>
+        <div class="panel-status" data-status="overview" data-state="loading" role="status">
+          <p class="panel-status-text" data-status-text="overview">Yükleniyor…</p>
+          <button type="button" class="button" data-retry="overview" hidden>Tekrar dene</button>
+        </div>
+        <div class="panel-content" data-content="overview" hidden>
+          <dl class="metrics">
+            <div class="metric"><dt>Çağrı</dt><dd data-metric="calls">—</dd></div>
+            <div class="metric"><dt>Randevu</dt><dd data-metric="bookings">—</dd></div>
+            <div class="metric"><dt>Onaylanan randevu</dt><dd data-metric="confirmed">—</dd></div>
+            <div class="metric"><dt>Hata kaydı</dt><dd data-metric="errors">—</dd></div>
+          </dl>
+          <p class="fine">Sayılar sunucuda kalıcı tutulan yerel kayıtlardır; sağlayıcı faturalandırması değildir.</p>
+
+          <div class="grid-2">
+            <section class="card" aria-labelledby="h-overview-state">
+              <h2 id="h-overview-state">Yerel durum</h2>
+              <dl class="facts">
+                <div class="fact">
+                  <dt>Yerel sağlık</dt>
+                  <dd><span data-metric="ready">—</span><span class="fact-note">Yalnızca yerel sunucu denetimi; sağlayıcı bağlantısı sınanmaz.</span></dd>
+                </div>
+                <div class="fact">
+                  <dt>Durdurma</dt>
+                  <dd><span data-metric="kill">—</span></dd>
+                </div>
+                <div class="fact">
+                  <dt>Sağlayıcı modu</dt>
+                  <dd><span data-metric="providerMock">—</span></dd>
+                </div>
+                <div class="fact">
+                  <dt>Çağrı sınırı</dt>
+                  <dd><span class="num" data-metric="maxCalls">—</span><span class="fact-note">Salt okunur yapılandırma.</span></dd>
+                </div>
+              </dl>
+            </section>
+
+            <section class="card" aria-labelledby="h-overview-budget">
+              <h2 id="h-overview-budget">Yerel rezervasyon bütçesi</h2>
+              <dl class="facts">
+                <div class="fact"><dt>Üst sınır</dt><dd><span class="num" data-metric="budgetCap">—</span> <span class="unit">birim</span></dd></div>
+                <div class="fact"><dt>Rezerve</dt><dd><span class="num" data-metric="budgetReserved">—</span> <span class="unit">birim</span></dd></div>
+                <div class="fact"><dt>Harcanan</dt><dd><span class="num" data-metric="budgetSpent">—</span> <span class="unit">birim</span></dd></div>
+                <div class="fact">
+                  <dt>Birim</dt>
+                  <dd><span data-metric="costUnit">—</span><span class="fact-note">Para tutarı ya da sağlayıcı faturası değildir.</span></dd>
+                </div>
+                <div class="fact">
+                  <dt>Sağlayıcı faturası</dt>
+                  <dd><span data-metric="providerInvoice">—</span><span class="fact-note">Bu panel sağlayıcı ücreti veya fatura tutarı göstermez.</span></dd>
+                </div>
+              </dl>
+              <p class="tech-ref">Teknik referans: <code class="mono" data-metric="costUnitCode">—</code> · <code class="mono" data-metric="providerInvoiceReason">—</code></p>
+            </section>
+          </div>
+          <p class="fine">Son okuma: <span data-metric="observedAt">—</span> · İstanbul saati</p>
+        </div>
+      </section>
+
+      <!-- Çağrılar -->
+      <section class="panel" data-panel="calls" aria-labelledby="h-calls" hidden>
+        <header class="panel-head">
+          <div>
+            <h1 id="h-calls" tabindex="-1">Çağrılar</h1>
+            <p class="lede">Çağrı durumları. Telefon numarası, transkript ve ses kaydı gösterilmez.</p>
+          </div>
+          <button type="button" class="button" data-refresh="calls">Yenile</button>
+        </header>
+        <div class="panel-status" data-status="calls" data-state="loading" role="status">
+          <p class="panel-status-text" data-status-text="calls">Yükleniyor…</p>
+          <button type="button" class="button" data-retry="calls" hidden>Tekrar dene</button>
+        </div>
+        <div class="panel-content" data-content="calls" hidden>
+          <div class="table-wrap">
+            <table>
+              <caption>En yeni 100 çağrı · İstanbul saati</caption>
+              <thead>
+                <tr><th scope="col">Çağrı kimliği</th><th scope="col">Durum</th><th scope="col">Başlangıç</th><th scope="col">Son olay</th></tr>
+              </thead>
+              <tbody data-rows="calls"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- Randevular -->
+      <section class="panel" data-panel="bookings" aria-labelledby="h-bookings" hidden>
+        <header class="panel-head">
+          <div>
+            <h1 id="h-bookings" tabindex="-1">Randevular</h1>
+            <p class="lede">Sunucunun kaydettiği randevu işlemleri. Sentetik sağlayıcıyla oluşanlar ayrıca işaretlenir.</p>
+          </div>
+          <button type="button" class="button" data-refresh="bookings">Yenile</button>
+        </header>
+        <div class="panel-status" data-status="bookings" data-state="loading" role="status">
+          <p class="panel-status-text" data-status-text="bookings">Yükleniyor…</p>
+          <button type="button" class="button" data-retry="bookings" hidden>Tekrar dene</button>
+        </div>
+        <div class="panel-content" data-content="bookings" hidden>
+          <div class="table-wrap">
+            <table>
+              <caption>En yeni 100 randevu · İstanbul saati</caption>
+              <thead>
+                <tr><th scope="col">Kayıt</th><th scope="col">Hizmet</th><th scope="col">Randevu zamanı</th><th scope="col">Durum</th><th scope="col">Kaynak</th><th scope="col">Çağrı</th><th scope="col">Oluşturulma</th></tr>
+              </thead>
+              <tbody data-rows="bookings"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- Bağlantılar -->
+      <section class="panel" data-panel="connections" aria-labelledby="h-connections" hidden>
+        <header class="panel-head">
+          <div>
+            <h1 id="h-connections" tabindex="-1">Bağlantılar</h1>
+            <p class="lede">Sağlayıcı anahtarlarını sunucudaki şifreli hazırlık kasasına kaydedin. Kayıtlı değerler geri gösterilmez.</p>
+          </div>
+          <button type="button" class="button" data-refresh="connections">Yenile</button>
+        </header>
+        <div class="panel-status" data-status="connections" data-state="loading" role="status">
+          <p class="panel-status-text" data-status-text="connections">Yükleniyor…</p>
+          <button type="button" class="button" data-retry="connections" hidden>Tekrar dene</button>
+        </div>
+        <div class="panel-content" data-content="connections" hidden>
+          <div class="callout callout--warn">
+            <p>Kaydetmek bağlantıyı etkinleştirmez ve doğrulamaz. Bu sürümde canlı doğrulama ve etkinleştirme kullanılamaz; sunucuda saklı bir değer çalışan bağlantı anlamına gelmez.</p>
+          </div>
+          <dl class="facts facts--inline">
+            <div class="fact"><dt>Çalışma zamanı sağlayıcısı</dt><dd data-connections-meta="runtime">—</dd></div>
+            <div class="fact"><dt>Canlı doğrulama</dt><dd data-connections-meta="verification">—</dd></div>
+            <div class="fact"><dt>Etkinleştirme</dt><dd data-connections-meta="activation">—</dd></div>
+          </dl>
+          <p id="connections-role-note" class="role-note" hidden>Bağlantı değerlerini yalnızca yönetici kaydedebilir.</p>
+          <fieldset id="connections-fieldset" class="plain-fieldset">
+            <legend class="visually-hidden">Bağlantı değerleri</legend>
+            <form class="conn-form" data-connection-form="retellApiKey" novalidate>
+              <div class="conn-head">
+                <label for="conn-retellApiKey">Retell API anahtarı</label>
+                <span class="conn-status"><span data-connection-status="retellApiKey">—</span><span class="conn-updated" data-connection-updated="retellApiKey"></span></span>
+              </div>
+              <div class="conn-row">
+                <input id="conn-retellApiKey" type="password" autocomplete="new-password" autocapitalize="off" spellcheck="false" maxlength="8192">
+                <button type="submit" class="button button--primary">Kaydet</button>
+              </div>
+            </form>
+            <form class="conn-form" data-connection-form="googleClientId" novalidate>
+              <div class="conn-head">
+                <label for="conn-googleClientId">Google OAuth istemci kimliği</label>
+                <span class="conn-status"><span data-connection-status="googleClientId">—</span><span class="conn-updated" data-connection-updated="googleClientId"></span></span>
+              </div>
+              <div class="conn-row">
+                <input id="conn-googleClientId" type="password" autocomplete="new-password" autocapitalize="off" spellcheck="false" maxlength="8192">
+                <button type="submit" class="button button--primary">Kaydet</button>
+              </div>
+            </form>
+            <form class="conn-form" data-connection-form="googleClientSecret" novalidate>
+              <div class="conn-head">
+                <label for="conn-googleClientSecret">Google OAuth istemci sırrı</label>
+                <span class="conn-status"><span data-connection-status="googleClientSecret">—</span><span class="conn-updated" data-connection-updated="googleClientSecret"></span></span>
+              </div>
+              <div class="conn-row">
+                <input id="conn-googleClientSecret" type="password" autocomplete="new-password" autocapitalize="off" spellcheck="false" maxlength="8192">
+                <button type="submit" class="button button--primary">Kaydet</button>
+              </div>
+            </form>
+            <form class="conn-form" data-connection-form="googleRefreshToken" novalidate>
+              <div class="conn-head">
+                <label for="conn-googleRefreshToken">Google yenileme belirteci</label>
+                <span class="conn-status"><span data-connection-status="googleRefreshToken">—</span><span class="conn-updated" data-connection-updated="googleRefreshToken"></span></span>
+              </div>
+              <div class="conn-row">
+                <input id="conn-googleRefreshToken" type="password" autocomplete="new-password" autocapitalize="off" spellcheck="false" maxlength="8192">
+                <button type="submit" class="button button--primary">Kaydet</button>
+              </div>
+            </form>
+          </fieldset>
+          <p class="fine">Değer yalnızca bir kez sunucuya gönderilir; alan her gönderimden sonra temizlenir.</p>
+          <div id="connections-message" class="message" role="status"></div>
+        </div>
+      </section>
+
+      <!-- İşletme taslağı -->
+      <section class="panel" data-panel="business" aria-labelledby="h-business" hidden>
+        <header class="panel-head">
+          <div>
+            <h1 id="h-business" tabindex="-1">İşletme taslağı</h1>
+            <p class="head-badge"><span id="business-draft-badge" class="badge badge--warn">Taslak · etkin değil</span></p>
+            <p class="lede">İşletme bilgilerini ve çalışma saatlerini taslak olarak kaydedin. Taslak, çalışan çağrı akışını ve randevu aralıklarını değiştirmez.</p>
+          </div>
+          <button type="button" class="button" data-refresh="business">Yenile</button>
+        </header>
+        <div class="panel-status" data-status="business" data-state="loading" role="status">
+          <p class="panel-status-text" data-status-text="business">Yükleniyor…</p>
+          <button type="button" class="button" data-retry="business" hidden>Tekrar dene</button>
+        </div>
+        <div class="panel-content" data-content="business" hidden>
+          <p class="meta-line">Taslak sürümü <span class="num" id="business-revision">—</span> · Son kayıt <span id="business-updated">—</span></p>
+          <p id="business-role-note" class="role-note" hidden>Taslağı yalnızca yönetici kaydedebilir.</p>
+          <form id="business-form" class="form" novalidate>
+            <fieldset id="business-fieldset" class="plain-fieldset">
+              <legend class="visually-hidden">İşletme taslağı alanları</legend>
+              <div class="form-grid">
+                <div class="field">
+                  <label for="biz-name">İşletme adı</label>
+                  <input id="biz-name" type="text" maxlength="100" required>
+                  <p id="biz-name-error" class="field-error" hidden></p>
+                </div>
+                <div class="field">
+                  <label for="biz-service">Hizmet</label>
+                  <input id="biz-service" type="text" maxlength="100" required>
+                  <p id="biz-service-error" class="field-error" hidden></p>
+                </div>
+                <div class="field field--wide">
+                  <label for="biz-policy">İşletme bilgisi ve kurallar</label>
+                  <textarea id="biz-policy" maxlength="2000" rows="4" aria-describedby="biz-policy-hint"></textarea>
+                  <p id="biz-policy-hint" class="hint">Yalnızca onaylı işletme bilgileri. Kişisel veri veya API anahtarı girmeyin.</p>
+                </div>
+                <div class="field">
+                  <label for="biz-timezone">Saat dilimi</label>
+                  <input id="biz-timezone" type="text" value="Europe/Istanbul" readonly aria-describedby="biz-timezone-hint">
+                  <p id="biz-timezone-hint" class="hint">Sabit; değiştirilemez.</p>
+                </div>
+                <fieldset id="biz-weekdays" class="field field--wide days-fieldset">
+                  <legend>Çalışma günleri</legend>
+                  <div class="days">
+                    <label class="day"><input type="checkbox" name="weekday" value="1">Pzt</label>
+                    <label class="day"><input type="checkbox" name="weekday" value="2">Sal</label>
+                    <label class="day"><input type="checkbox" name="weekday" value="3">Çar</label>
+                    <label class="day"><input type="checkbox" name="weekday" value="4">Per</label>
+                    <label class="day"><input type="checkbox" name="weekday" value="5">Cum</label>
+                    <label class="day"><input type="checkbox" name="weekday" value="6">Cmt</label>
+                    <label class="day"><input type="checkbox" name="weekday" value="7">Paz</label>
+                  </div>
+                  <p id="biz-weekdays-error" class="field-error" hidden></p>
+                </fieldset>
+                <div class="form-row-3 field--wide">
+                  <div class="field">
+                    <label for="biz-start">Başlangıç</label>
+                    <input id="biz-start" type="time" step="60" required>
+                  </div>
+                  <div class="field">
+                    <label for="biz-end">Bitiş</label>
+                    <input id="biz-end" type="time" step="60" required>
+                  </div>
+                  <div class="field">
+                    <label for="biz-duration">Randevu süresi (dakika)</label>
+                    <input id="biz-duration" type="number" inputmode="numeric" min="5" step="1" required aria-describedby="biz-duration-hint">
+                    <p id="biz-duration-hint" class="hint">En az 5 dakika; çalışma aralığına sığmalı.</p>
+                  </div>
+                  <p id="biz-hours-error" class="field-error field--wide" hidden></p>
+                  <p id="biz-duration-error" class="field-error field--wide" hidden></p>
+                </div>
+              </div>
+              <div class="form-actions">
+                <button type="submit" class="button button--primary">Taslağı kaydet</button>
+                <span class="fine">Sunucu doğrulaması belirleyicidir.</span>
+              </div>
+            </fieldset>
+          </form>
+          <div id="business-message" class="message" role="status"></div>
+          <button id="business-reload" type="button" class="button" hidden>Taslağı yeniden yükle</button>
+
+          <section id="business-effective" class="card card--muted" aria-labelledby="h-business-effective" hidden>
+            <h2 id="h-business-effective">Sunucunun bildirdiği etkin yapılandırma</h2>
+            <p class="fine">Salt okunur. Bu panel etkin yapılandırmayı değiştirmez.</p>
+            <dl class="facts" id="business-effective-facts"></dl>
+          </section>
+        </div>
+      </section>
+
+      <!-- Bütçe ve limitler -->
+      <section class="panel" data-panel="budget" aria-labelledby="h-budget" hidden>
+        <header class="panel-head">
+          <div>
+            <h1 id="h-budget" tabindex="-1">Bütçe ve limitler</h1>
+            <p class="lede">Yerel rezervasyon bütçesi ve salt okunur çağrı sınırı.</p>
+          </div>
+          <button type="button" class="button" data-refresh="budget">Yenile</button>
+        </header>
+        <div class="panel-status" data-status="budget" data-state="loading" role="status">
+          <p class="panel-status-text" data-status-text="budget">Yükleniyor…</p>
+          <button type="button" class="button" data-retry="budget" hidden>Tekrar dene</button>
+        </div>
+        <div class="panel-content" data-content="budget" hidden>
+          <div class="callout">
+            <p>Bu yalnızca yerel rezervasyon bütçesidir; sağlayıcı (Retell) harcama limiti değildir.</p>
+          </div>
+          <div class="grid-2">
+            <section class="card" aria-labelledby="h-budget-now">
+              <h2 id="h-budget-now">Güncel bütçe</h2>
+              <dl class="facts">
+                <div class="fact"><dt>Üst sınır</dt><dd><span class="num" data-budget="cap">—</span> <span class="unit">birim</span></dd></div>
+                <div class="fact"><dt>Rezerve</dt><dd><span class="num" data-budget="reserved">—</span> <span class="unit">birim</span></dd></div>
+                <div class="fact"><dt>Harcanan</dt><dd><span class="num" data-budget="spent">—</span> <span class="unit">birim</span></dd></div>
+              </dl>
+              <p class="fine">Birim: yerel rezervasyon birimi. Para tutarı ya da sağlayıcı faturası değildir.</p>
+            </section>
+            <section class="card" aria-labelledby="h-budget-calls">
+              <h2 id="h-budget-calls">Çağrı sınırı</h2>
+              <dl class="facts">
+                <div class="fact"><dt>En fazla çağrı</dt><dd><span class="num" id="max-calls">—</span></dd></div>
+              </dl>
+              <p class="fine">Salt okunur yapılandırma. Bu değeri değiştiren bir uç nokta yok; panelden düzenlenemez.</p>
+            </section>
+          </div>
+
+          <section class="card" aria-labelledby="h-budget-form">
+            <h2 id="h-budget-form">Yerel üst sınırı değiştir</h2>
+            <p id="limit-role-note" class="role-note" hidden>Bütçe sınırını yalnızca yönetici değiştirebilir.</p>
+            <form id="limit-form" class="form" novalidate>
+              <fieldset id="limit-fieldset" class="plain-fieldset">
+                <legend class="visually-hidden">Yerel bütçe üst sınırı</legend>
+                <div class="field field--narrow">
+                  <label for="limit-cap">Yeni üst sınır (yerel rezervasyon birimi)</label>
+                  <input id="limit-cap" type="number" inputmode="numeric" min="0" max="1000000000" step="1" required aria-describedby="limit-cap-hint">
+                  <p id="limit-cap-hint" class="hint">0 ile 1.000.000.000 arasında tam sayı. Düşürmek geçmiş harcamayı geri almaz.</p>
+                  <p id="limit-cap-error" class="field-error" hidden></p>
+                </div>
+                <div class="form-actions">
+                  <button type="submit" class="button button--primary">Sınırı kaydet</button>
+                </div>
+              </fieldset>
+            </form>
+            <div id="limit-message" class="message" role="status"></div>
+            <button id="limit-reload" type="button" class="button" hidden>Verileri yenile</button>
+          </section>
+        </div>
+      </section>
+
+      <!-- Durdurma kontrolü -->
+      <section class="panel" data-panel="control" aria-labelledby="h-control" hidden>
+        <header class="panel-head">
+          <div>
+            <h1 id="h-control" tabindex="-1">Durdurma kontrolü</h1>
+            <p class="lede">Seçili işletme için yeni iş akışı işlemlerini durdurun veya yeniden açın.</p>
+          </div>
+          <button type="button" class="button" data-refresh="control">Yenile</button>
+        </header>
+        <div class="panel-status" data-status="control" data-state="loading" role="status">
+          <p class="panel-status-text" data-status-text="control">Yükleniyor…</p>
+          <button type="button" class="button" data-retry="control" hidden>Tekrar dene</button>
+        </div>
+        <div class="panel-content" data-content="control" hidden>
+          <section class="card" aria-labelledby="h-control-state">
+            <h2 id="h-control-state">Güncel durum</h2>
+            <dl class="facts">
+              <div class="fact"><dt>Yeni işlemler</dt><dd><span id="kill-state">—</span></dd></div>
+            </dl>
+            <div class="callout callout--warn">
+              <p>Durdurma, bu işletme için yeni iş akışı işlemlerini engeller. Devam eden bir çağrıyı sonlandırmaz ve sağlayıcı ücretlerini durdurmaz.</p>
+            </div>
+            <p id="control-role-note" class="role-note" hidden>Durdurma durumunu yalnızca yönetici veya operatör değiştirebilir.</p>
+            <div class="form-actions">
+              <button id="kill-toggle" type="button" class="button button--danger">Yeni işlemleri durdur</button>
+              <button id="control-retry" type="button" class="button" hidden>Aynı işlemi yeniden gönder</button>
+              <button id="control-reload" type="button" class="button" hidden>Durumu yenile</button>
+            </div>
+            <div id="control-message" class="message" role="status"></div>
+          </section>
+        </div>
+      </section>
+
+      <!-- Hatalar -->
+      <section class="panel" data-panel="errors" aria-labelledby="h-errors" hidden>
+        <header class="panel-head">
+          <div>
+            <h1 id="h-errors" tabindex="-1">Hatalar</h1>
+            <p class="lede">İnceleme bekleyen işler. Yeniden oynatma (replay) bu panelde kullanılamaz.</p>
+          </div>
+          <button type="button" class="button" data-refresh="errors">Yenile</button>
+        </header>
+        <div class="panel-status" data-status="errors" data-state="loading" role="status">
+          <p class="panel-status-text" data-status-text="errors">Yükleniyor…</p>
+          <button type="button" class="button" data-retry="errors" hidden>Tekrar dene</button>
+        </div>
+        <div class="panel-content" data-content="errors" hidden>
+          <div class="callout">
+            <p>Yeniden oynatma bu sürümde yok. Sonucu belirsiz işlemler için yeni işlem başlatmayın; mevcut mutabakat sürecini izleyin.</p>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <caption>En yeni 100 hata kaydı · İstanbul saati</caption>
+              <thead>
+                <tr><th scope="col">İş</th><th scope="col">Tür</th><th scope="col">Durum</th><th scope="col">Neden</th><th scope="col">Deneme</th><th scope="col">Oluşturulma</th></tr>
+              </thead>
+              <tbody data-rows="errors"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- Denetim kaydı -->
+      <section class="panel" data-panel="audit" aria-labelledby="h-audit" hidden>
+        <header class="panel-head">
+          <div>
+            <h1 id="h-audit" tabindex="-1">Denetim kaydı</h1>
+            <p class="lede">Sunucu ve yönetim işlemlerinin kaydı.</p>
+          </div>
+          <button type="button" class="button" data-refresh="audit">Yenile</button>
+        </header>
+        <div class="panel-status" data-status="audit" data-state="loading" role="status">
+          <p class="panel-status-text" data-status-text="audit">Yükleniyor…</p>
+          <button type="button" class="button" data-retry="audit" hidden>Tekrar dene</button>
+        </div>
+        <div class="panel-content" data-content="audit" hidden>
+          <h2 class="section-title">İşletme işlemleri</h2>
+          <div class="table-wrap">
+            <table>
+              <caption>Sunucu tarafından kaydedilen işlemler · İstanbul saati</caption>
+              <thead>
+                <tr><th scope="col">Kayıt</th><th scope="col">İşlem</th><th scope="col">Zaman</th></tr>
+              </thead>
+              <tbody data-rows="audit"></tbody>
+            </table>
+          </div>
+          <h2 class="section-title">Yönetim paneli işlemleri</h2>
+          <p class="fine">Aktör, kullanıcı adının karma (hash) değeridir; gerçek kimliği göstermez.</p>
+          <div class="table-wrap">
+            <table>
+              <caption>Panel üzerinden yapılan işlemler · İstanbul saati</caption>
+              <thead>
+                <tr><th scope="col">Kayıt</th><th scope="col">Aktör (karma kimlik)</th><th scope="col">İşlem</th><th scope="col">Zaman</th></tr>
+              </thead>
+              <tbody data-rows="audit-admin"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+
+<div id="confirm-dialog" class="modal" role="dialog" aria-modal="true" aria-labelledby="confirm-title" aria-describedby="confirm-body" hidden>
+  <div class="modal-box">
+    <h2 id="confirm-title">İşlemi onaylayın</h2>
+    <p id="confirm-body"></p>
+    <p id="confirm-tenant" class="fine"></p>
+    <div class="modal-actions">
+      <button id="confirm-cancel" type="button" class="button">Vazgeç</button>
+      <button id="confirm-ok" type="button" class="button button--danger">Onayla</button>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{
+  "mode": "local",
+  "host": "127.0.0.1",
+  "dbPath": "/REPLACE_WITH_PROJECT_PATH/.local/core.sqlite",
+  "providerDbPath": "/REPLACE_WITH_PROJECT_PATH/.local/fake-provider.sqlite",
+  "tenants": [{
+    "id": "fictional-demo", "route": "demo",
+    "keys": {
+      "event": "REPLACE_WITH_UNIQUE_RANDOM_EVENT_SECRET",
+      "tool": "REPLACE_WITH_UNIQUE_RANDOM_TOOL_SECRET",
+      "operator": "REPLACE_WITH_UNIQUE_RANDOM_OPERATOR_SECRET"
+    },
+    "budgetMicros": 100000, "maxCalls": 100
+  }]
+}

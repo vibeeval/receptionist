@@ -1,0 +1,6 @@
+{
+  "mode":"local","host":"127.0.0.1",
+  "dbPath":"/absolute/local/composition-core.sqlite",
+  "providerDbPath":"/absolute/local/unused-demo-boundary.sqlite",
+  "tenants":[{"id":"fictional-demo","route":"demo","keys":{"event":"env:CORE_EVENT_KEY","tool":"env:CORE_TOOL_KEY","operator":"env:CORE_OPERATOR_KEY"},"budgetMicros":10000,"maxCalls":10}]
+}

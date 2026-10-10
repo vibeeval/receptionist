@@ -1,0 +1,6 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { harness,signed,event,NOW } from './helpers.js';
+import { migrateRetell } from '../../src/providers/retell-migration.js';
+import { initializeSyntheticRetention,retentionRun } from '../../src/retention.js';
+test('postgres purged payload keeps exact replay idempotent and changed replay rejected',async()=>{const h=await harness(),db=h.engine.store;try{const fixtureToken='d'.repeat(64);await migrateRetell(db);await initializeSyntheticRetention(db,fixtureToken,NOW);await signed(h.engine,h.config,'event','demo-a','events',event());await h.engine.drain();await signed(h.engine,h.config,'event','demo-a','events',event('end','call-1','call.ended'));await h.engine.drain();await db.run('UPDATE inbox SET created_ms=?',NOW-2*86400000);assert.equal((await retentionRun(db,{fixtureToken,now:NOW,referenceNow:NOW,apply:true})).payloads,2);assert.equal((await signed(h.engine,h.config,'event','demo-a','events',event())).status,200);assert.equal((await signed(h.engine,h.config,'event','demo-a','events',event('evt-1','changed-call'))).status,409);assert.equal((await db.all('SELECT * FROM inbox')).length,2);assert.equal((await db.all('SELECT * FROM jobs')).length,2);}finally{await h.close();}});

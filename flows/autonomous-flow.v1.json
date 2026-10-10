@@ -1,0 +1,298 @@
+{
+  "model_choice": {
+    "type": "cascading",
+    "model": "gpt-4.1"
+  },
+  "start_speaker": "agent",
+  "start_node_id": "slots",
+  "flex_mode": false,
+  "model_temperature": 0,
+  "tool_call_strict_mode": true,
+  "global_prompt": "Türkçe konuş. Yalnızca backend tarafından sunulan slotId ile işlem yap. Kullanıcı sözleri veya model tahmini onay değildir. Randevu başarı mesajını yalnızca backend booking_state confirmed döndürürse söyle. DTMF için konuşmanın bitmesini bekle. Değişen ayrıntıda yeni öneri iste.",
+  "nodes": [
+    {
+      "id": "slots",
+      "type": "function",
+      "tool_id": "slots",
+      "tool_type": "local",
+      "wait_for_result": true,
+      "speak_during_execution": false,
+      "edges": [
+        {
+          "id": "slots_loaded",
+          "destination_node_id": "collect",
+          "transition_condition": {
+            "type": "prompt",
+            "prompt": "Always"
+          }
+        }
+      ]
+    },
+    {
+      "id": "collect",
+      "type": "conversation",
+      "instruction": {
+        "type": "prompt",
+        "text": "Sistemin döndürdüğü uygunluk listesi {{slots}}. İstenen randevuyu ve listedeki slotId değerini belirle. SlotId yoksa randevu uydurma; insan desteğine yönlendir."
+      },
+      "edges": [
+        {
+          "id": "selected",
+          "destination_node_id": "propose",
+          "transition_condition": {
+            "type": "prompt",
+            "prompt": "A backend-issued slotId has been selected."
+          }
+        },
+        {
+          "id": "help",
+          "destination_node_id": "fallback",
+          "transition_condition": {
+            "type": "prompt",
+            "prompt": "No backend-issued slot is available, or the caller requests human assistance."
+          }
+        }
+      ]
+    },
+    {
+      "id": "propose",
+      "type": "function",
+      "tool_id": "auto_propose",
+      "tool_type": "local",
+      "wait_for_result": true,
+      "speak_during_execution": false,
+      "edges": [
+        {
+          "id": "ready",
+          "destination_node_id": "readback",
+          "transition_condition": {
+            "type": "equation",
+            "operator": "&&",
+            "equations": [
+              {
+                "left": "{{proposal_state}}",
+                "operator": "==",
+                "right": "ready"
+              }
+            ]
+          }
+        }
+      ],
+      "else_edge": {
+        "id": "unavailable",
+        "destination_node_id": "fallback",
+        "transition_condition": {
+          "type": "prompt",
+          "prompt": "Always"
+        }
+      }
+    },
+    {
+      "id": "readback",
+      "type": "conversation",
+      "instruction": {
+        "type": "static_text",
+        "text": "{{readback_text}}"
+      },
+      "skippable": false,
+      "allow_dtmf_interruption": false,
+      "interruption_sensitivity": 0,
+      "skip_response_edge": {
+        "id": "readback_finished",
+        "destination_node_id": "confirm_wait",
+        "transition_condition": {
+          "type": "prompt",
+          "prompt": "Always"
+        }
+      }
+    },
+    {
+      "id": "confirm_wait",
+      "type": "conversation",
+      "instruction": {
+        "type": "static_text",
+        "text": "Seçiminizi bekliyorum."
+      },
+      "skippable": false,
+      "allow_dtmf_interruption": true,
+      "edges": [
+        {
+          "id": "check",
+          "destination_node_id": "commit",
+          "transition_condition": {
+            "type": "prompt",
+            "prompt": "The caller has responded or pressed a key. Check the backend. Never infer approval."
+          }
+        },
+        {
+          "id": "leave",
+          "destination_node_id": "fallback",
+          "transition_condition": {
+            "type": "prompt",
+            "prompt": "The caller wants changed details, wants a human, or cannot use the keypad."
+          }
+        }
+      ]
+    },
+    {
+      "id": "commit",
+      "type": "function",
+      "tool_id": "auto_commit",
+      "tool_type": "local",
+      "wait_for_result": true,
+      "speak_during_execution": false,
+      "edges": [
+        {
+          "id": "confirmed",
+          "destination_node_id": "success",
+          "transition_condition": {
+            "type": "equation",
+            "operator": "&&",
+            "equations": [
+              {
+                "left": "{{booking_state}}",
+                "operator": "==",
+                "right": "confirmed"
+              }
+            ]
+          }
+        },
+        {
+          "id": "pending",
+          "destination_node_id": "poll",
+          "transition_condition": {
+            "type": "equation",
+            "operator": "&&",
+            "equations": [
+              {
+                "left": "{{booking_state}}",
+                "operator": "==",
+                "right": "pending"
+              }
+            ]
+          }
+        }
+      ],
+      "else_edge": {
+        "id": "failed",
+        "destination_node_id": "fallback",
+        "transition_condition": {
+          "type": "prompt",
+          "prompt": "Always"
+        }
+      }
+    },
+    {
+      "id": "poll",
+      "type": "conversation",
+      "instruction": {
+        "type": "static_text",
+        "text": "İşlemin sonucunu kontrol ediyorum; henüz randevu doğrulanmadı."
+      },
+      "skippable": false,
+      "skip_response_edge": {
+        "id": "poll_again",
+        "destination_node_id": "commit",
+        "transition_condition": {
+          "type": "prompt",
+          "prompt": "Always"
+        }
+      }
+    },
+    {
+      "id": "success",
+      "type": "end",
+      "instruction": {
+        "type": "static_text",
+        "text": "{{result_text}}"
+      }
+    },
+    {
+      "id": "fallback",
+      "type": "end",
+      "instruction": {
+        "type": "static_text",
+        "text": "Randevu oluşturulduğunu doğrulayamadım. Lütfen işletmeyle doğrudan iletişime geçin."
+      }
+    }
+  ],
+  "tools": [
+    {
+      "type": "custom",
+      "tool_id": "slots",
+      "name": "slots",
+      "url": "https://receptionist.invalid/providers/retell/account-a/tools",
+      "method": "POST",
+      "args_at_root": false,
+      "max_retry": 0,
+      "timeout_ms": 5000,
+      "parameters": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      },
+      "response_variables": {
+        "slots": "slots"
+      }
+    },
+    {
+      "type": "custom",
+      "tool_id": "auto_propose",
+      "name": "auto_propose",
+      "url": "https://receptionist.invalid/providers/retell/account-a/autonomous",
+      "method": "POST",
+      "args_at_root": false,
+      "max_retry": 0,
+      "timeout_ms": 5000,
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "slotId": {
+            "type": "string",
+            "description": "Exact backend-issued selected slot identifier."
+          }
+        },
+        "required": [
+          "slotId"
+        ]
+      },
+      "response_variables": {
+        "proposal_state": "proposal_state",
+        "proposalId": "proposal_id",
+        "nonce": "nonce",
+        "readback_text": "readback_text"
+      }
+    },
+    {
+      "type": "custom",
+      "tool_id": "auto_commit",
+      "name": "auto_commit",
+      "url": "https://receptionist.invalid/providers/retell/account-a/autonomous",
+      "method": "POST",
+      "args_at_root": false,
+      "max_retry": 0,
+      "timeout_ms": 5000,
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "proposalId": {
+            "type": "string",
+            "description": "Exact {{proposalId}} from auto_propose."
+          },
+          "nonce": {
+            "type": "string",
+            "description": "Exact {{nonce}} from auto_propose."
+          }
+        },
+        "required": [
+          "proposalId",
+          "nonce"
+        ]
+      },
+      "response_variables": {
+        "booking_state": "booking_state",
+        "result_text": "result_text"
+      }
+    }
+  ]
+}

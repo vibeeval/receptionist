@@ -1,0 +1,44 @@
+{
+  "name": "receptionist-local-core",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.13 <23"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "npm run build && node --test --test-concurrency=1 dist/tests/*.test.js",
+    "test:coverage": "npm run build && node --test --test-concurrency=1 --experimental-test-coverage --test-coverage-include='dist/src/**' dist/tests/*.test.js",
+    "test:postgres": "npm run build && node dist/scripts/postgres-suite.js",
+    "demo": "npm run build && node dist/src/demo.js",
+    "start:local": "npm run build && node --env-file-if-exists=.env dist/src/serve.js",
+    "check:source": "node scripts/check-source.cjs",
+    "test:postgres:local": "npm run build && python3 scripts/run-postgres-local.py",
+    "test:providers": "npm run build && node --import ./dist/tests/providers/offline-guard.js --test --test-concurrency=1 dist/tests/providers/*.test.js",
+    "demo:retention": "npm run build && node dist/scripts/retention-demo.js",
+    "test:composition": "npm run build && node --import ./dist/tests/composition/no-egress.js --test --test-concurrency=1 dist/tests/composition/*.test.js",
+    "demo:composition": "npm run build && node --import ./dist/tests/composition/no-egress.js dist/scripts/composition-demo.js",
+    "smoke:offline": "npm ci --offline --ignore-scripts && npm run demo:composition",
+    "test:autonomous": "npm run build && node --import ./dist/tests/composition/no-egress.js --test --test-concurrency=1 dist/tests/autonomous/*.test.js",
+    "demo:autonomous": "npm run build && node --import ./dist/tests/composition/no-egress.js dist/scripts/autonomous-demo.js",
+    "export:autonomous": "npm run build && node dist/scripts/export-autonomous-flow.js",
+    "google:reauthorize": "npm run build && node --env-file-if-exists=.env dist/scripts/google-reauthorize.js --replace-google-grant",
+    "demo:production": "npm run build && node --import ./dist/tests/composition/no-egress.js --test --test-concurrency=1 dist/tests/composition/production-e2e.test.js",
+    "dashboard:demo": "npm run build && node --import ./dist/tests/composition/no-egress.js dist/scripts/dashboard-demo.js",
+    "test:admin": "npm run build && node --import ./dist/tests/composition/no-egress.js --test --test-concurrency=1 dist/tests/admin/*.test.js"
+  },
+  "dependencies": {
+    "pg": "8.23.1",
+    "retell-sdk": "6.2.4",
+    "ws": "8.22.0",
+    "zod": "4.6.5"
+  },
+  "devDependencies": {
+    "@types/node": "22.20.5",
+    "@types/pg": "8.23.1",
+    "@types/ws": "8.18.2",
+    "typescript": "7.0.2"
+  },
+  "license": "Apache-2.0"
+}

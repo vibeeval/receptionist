@@ -1,0 +1,17 @@
+{
+  "webhook_events": [
+    "call_started",
+    "call_ended",
+    "call_analyzed"
+  ],
+  "data_storage_setting": "basic_attributes_only",
+  "opt_in_signed_url": true,
+  "allow_user_dtmf": true,
+  "allow_dtmf_interruption": true,
+  "user_dtmf_options": {
+    "digit_limit": 1,
+    "timeout_ms": 2000
+  },
+  "language": "tr-TR",
+  "max_call_duration_ms": 300000
+}

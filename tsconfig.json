@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "target": "ES2022", "module": "NodeNext", "moduleResolution": "NodeNext", "types": ["node"],
+    "strict": true, "noUncheckedIndexedAccess": true, "exactOptionalPropertyTypes": true,
+    "outDir": "dist", "rootDir": ".", "skipLibCheck": true,
+    "noImplicitOverride": true, "noFallthroughCasesInSwitch": true,
+    "forceConsistentCasingInFileNames": true, "sourceMap": true
+  },
+  "include": ["src/**/*.ts", "tests/**/*.ts", "scripts/**/*.ts"]
+}

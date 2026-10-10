@@ -1,0 +1,2 @@
+import {readFileSync} from 'node:fs';import {remoteFlowDigest} from '../src/providers/retell-setup.js';
+if(!process.argv[2])throw new Error('REVIEWED_FLOW_JSON_PATH_REQUIRED');const raw=readFileSync(process.argv[2],'utf8');if(Buffer.byteLength(raw)>524288)throw new Error('EXPORT_TOO_LARGE');const flow=JSON.parse(raw);if(!flow||typeof flow!=='object'||Array.isArray(flow))throw new Error('FLOW_OBJECT_REQUIRED');console.log(JSON.stringify({remoteSha256:remoteFlowDigest(flow),externalRequests:0,note:'A digest is not approval; inspect the full provider export before pinning.'}));
